@@ -256,20 +256,8 @@
                 {
                   "children": [
                     {
-                      "active": true,
-                      "activeTime": "1756300711280",
-                      "children": {
-                        "action": "cb-get-scroll",
-                        "blockId": "20200923234011-ieuun1p",
-                        "instance": "Editor",
-                        "mode": "wysiwyg",
-                        "notebookId": "20210808180117-6v0mkxr",
-                        "rootId": "20200923234011-ieuun1p"
-                      },
-                      "docIcon": "1f389",
-                      "instance": "Tab",
-                      "pin": false,
-                      "title": "Please Start Here"
+                      "children": {},
+                      "instance": "Tab"
                     }
                   ],
                   "height": "",
@@ -453,7 +441,7 @@
   "readonly": false,
   "localIPs": [
     "127.0.0.1",
-    "172.20.0.2",
+    "172.20.0.3",
     "[::1]"
   ],
   "accessAuthCode": "siyuan123",
@@ -1246,7 +1234,7 @@
     "cTreeCount": 100,
     "blockCount": 0,
     "cBlockCount": 5000,
-    "dataSize": 36864,
+    "dataSize": 60071,
     "cDataSize": 104857600,
     "assetsSize": 0,
     "cAssetsSize": 104857600
