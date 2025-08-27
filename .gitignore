@@ -1,0 +1,218 @@
+# ==============================================================================
+# .gitignore for Obsidian-PostgreSQL-SiYuan-Gitea Docker Stack
+# ==============================================================================
+
+# ===========================
+# Docker & Compose
+# ===========================
+.env
+.env.local
+.env.*.local
+docker-compose.override.yml
+volumes/
+data/
+
+# ===========================
+# Database Files (PostgreSQL)
+# ===========================
+*.sql.backup
+*.dump
+*.backup
+postgres/data/
+postgres/logs/
+pgdata/
+postgres_data/
+
+# ===========================
+# Redis
+# ===========================
+redis/data/
+redis/logs/
+*.rdb
+*.aof
+dump.rdb
+appendonly.aof
+
+# ===========================
+# Gitea
+# ===========================
+gitea/data/
+gitea/logs/
+gitea/repositories/
+gitea/lfs/
+gitea/indexers/
+gitea/sessions/
+gitea/avatars/
+gitea/attachments/
+gitea/custom/
+gitea/ssh/
+
+# Gitea secrets (these should be in environment variables)
+gitea/conf/app.ini.backup
+gitea/conf/*.key
+
+# ===========================
+# SiYuan
+# ===========================
+# SiYuan temp and cache files
+siyuan/workspace/temp/
+siyuan/workspace/conf/bazaar/
+siyuan/data/
+siyuan/logs/
+
+# SiYuan database files (temporary and cache)
+*.db
+*.db-shm
+*.db-wal
+siyuan.log*
+
+# SiYuan backup files
+*.sy.zip
+*.json.backup
+
+# ===========================
+# Obsidian Sync
+# ===========================
+obsidian-sync/logs/
+obsidian-sync/temp/
+obsidian-sync/data/
+
+# ===========================
+# Logs and Temporary Files
+# ===========================
+# General log files
+*.log
+*.log.*
+logs/
+log/
+temp/
+tmp/
+
+# Backup files
+*.backup
+*.bak
+*.old
+*.orig
+*~
+.#*
+
+# ===========================
+# Operating System
+# ===========================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.nfs*
+
+# ===========================
+# Editors & IDEs
+# ===========================
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains
+.idea/
+*.iml
+*.iws
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# ===========================
+# Security & Secrets
+# ===========================
+# Private keys and certificates
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+
+# Secret files
+secrets/
+.secrets
+*.secret
+*.env.secret
+
+# SSH keys
+id_rsa
+id_ed25519
+*.pub
+
+# ===========================
+# Application Data
+# ===========================
+# Node modules (if you add any Node.js tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if you add Python scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.env
+
+# ===========================
+# Build & Distribution
+# ===========================
+build/
+dist/
+*.tar.gz
+*.zip
+*.7z
+
+# ===========================
+# Version Control
+# ===========================
+# Git
+*.orig
+*.rej
+
+# ===========================
+# Custom Exclusions
+# ===========================
+# Add any project-specific exclusions below:
+
+# Local development overrides
+docker-compose.dev.yml
+docker-compose.local.yml
+
+# Test data
+test-data/
+sample-data/
+
+# Documentation drafts
+*.draft.md
+
+# ==============================================================================
+# END OF .gitignore
+# ==============================================================================
