@@ -1,0 +1,149 @@
+version: '3.8'
+
+services:
+  # PostgreSQL for Obsidian vault
+  postgres:
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
+    container_name: obsidian-postgres
+    environment:
+      POSTGRES_DB: obsidian_vault
+      POSTGRES_USER: obsidian_user
+      POSTGRES_PASSWORD: obsidian_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d
+    ports:
+      - "5433:5432"
+    networks:
+      - obsidian-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U obsidian_user -d obsidian_vault"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Redis for caching and session management
+  redis:
+    build:
+      context: ./redis
+      dockerfile: Dockerfile
+    container_name: obsidian-redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6380:6379"
+    networks:
+      - obsidian-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Gitea for Git repository management
+  gitea:
+    image: gitea/gitea:1.22
+    container_name: obsidian-gitea
+    environment:
+      USER_UID: 1000
+      USER_GID: 1000
+    volumes:
+      - gitea_data:/data
+      - ./gitea/app.ini:/data/gitea/conf/app.ini
+      - ./gitea/init.sh:/usr/local/bin/init-admin.sh
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3000:3000"
+      - "2222:22"
+    networks:
+      - obsidian-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/v1/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Siyuan for knowledge management
+  siyuan:
+    image: b3log/siyuan:v3.3.0
+    container_name: obsidian-siyuan
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - SIYUAN_ACCESS_AUTH_CODE=siyuan123
+    volumes:
+      - siyuan_data:/home/siyuan/Documents/SiYuan
+      - ./siyuan/workspace:/siyuan/workspace
+    ports:
+      - "6806:6806"
+    networks:
+      - obsidian-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:6806/api/system/getVersion"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Obsidian sync service (optional - for syncing vaults)
+  obsidian-sync:
+    build:
+      context: ./obsidian-sync
+      dockerfile: Dockerfile
+    container_name: obsidian-sync
+    environment:
+      - VAULT_PATH=/vault
+      - GIT_REPO_URL=
+      - GIT_USERNAME=
+      - GIT_EMAIL=
+    volumes:
+      - obsidian_vault:/vault
+      - ./obsidian-sync/scripts:/scripts
+    networks:
+      - obsidian-network
+    depends_on:
+      gitea:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "obsidian-sync"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  gitea_data:
+    driver: local
+  gitea_config:
+    driver: local
+  siyuan_data:
+    driver: local
+  obsidian_vault:
+    driver: local
+
+networks:
+  obsidian-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

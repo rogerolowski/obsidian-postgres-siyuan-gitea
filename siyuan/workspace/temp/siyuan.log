@@ -1,0 +1,76 @@
+I 2025/08/27 19:46:12 working.go:178: 
+      ___                                   ___           ___           ___
+     /  /\        ___           ___        /__/\         /  /\         /__/\
+    /  /:/_      /  /\         /__/|       \  \:\       /  /::\        \  \:\
+   /  /:/ /\    /  /:/        |  |:|        \  \:\     /  /:/\:\        \  \:\
+  /  /:/ /::\  /__/::\        |  |:|    ___  \  \:\   /  /:/~/::\   _____\__\:\
+ /__/:/ /:/\:\ \__\/\:\__   __|__|:|   /__/\  \__\:\ /__/:/ /:/\:\ /__/::::::::\
+ \  \:\/:/~/:/    \  \:\/\ /__/::::\   \  \:\ /  /:/ \  \:\/:/__\/ \  \:\~~\~~\/
+  \  \::/ /:/      \__\::/    ~\~~\:\   \  \:\  /:/   \  \::/       \  \:\  ~~~
+   \__\/ /:/       /__/:/       \  \:\   \  \:\/:/     \  \:\        \  \:\
+     /__/:/        \__\/         \__\/    \  \::/       \  \:\        \  \:\
+     \__\/                                 \__\/         \__\/         \__\/
+I 2025/08/27 19:46:12 runtime.go:93: kernel is booting:
+    * ver [3.3.0]
+    * arch [amd64]
+    * os [alpine]
+    * pid [1]
+    * runtime mode [prod]
+    * working directory [/opt/siyuan]
+    * read only [false]
+    * container [docker]
+    * database [ver=20220501]
+    * workspace directory [/siyuan/workspace]
+D 2025/08/27 19:46:12 conf.go:170: check device locale failed [detect: not detected], using default language [en_US]
+I 2025/08/27 19:46:12 runtime.go:145: use network proxy [system]
+I 2025/08/27 19:46:12 serve.go:208: kernel [pid=1] http server [0.0.0.0:6806] is booting
+I 2025/08/27 19:46:13 blocktree.go:75: reinitialized database [/siyuan/workspace/temp/blocktree.db]
+I 2025/08/27 19:46:13 database.go:93: the database structure is changed, rebuilding database...
+I 2025/08/27 19:46:13 database.go:110: reinitialized database [/siyuan/workspace/temp/siyuan.db]
+I 2025/08/27 19:46:13 conf.go:881: tree/block count [0/0]
+I 2025/08/27 19:46:13 working.go:224: kernel booted
+I 2025/08/27 19:46:13 font.go:57: loaded system fonts [0] in [0ms]
+I 2025/08/27 19:46:13 box.go:77: auto stat [trees=0, blocks=0, dataSize=36.87 kB, assetsSize=0 B]
+I 2025/08/27 19:46:14 cron.go:61: cron job [[RefreshRhyResultJob]] executed
+I 2025/08/27 19:55:40 process.go:36: received os signal [terminated], exit kernel process now
+I 2025/08/27 19:55:40 conf.go:625: exiting kernel [force=false, setCurrentWorkspace=true, execInstallPkg=1]
+I 2025/08/27 19:55:41 database.go:1314: closed database
+I 2025/08/27 19:55:41 conf.go:1065: cleared workspace temp
+I 2025/08/27 19:55:41 sync.go:799: sync websocket closed
+I 2025/08/27 19:56:43 working.go:178: 
+      ___                                   ___           ___           ___
+     /  /\        ___           ___        /__/\         /  /\         /__/\
+    /  /:/_      /  /\         /__/|       \  \:\       /  /::\        \  \:\
+   /  /:/ /\    /  /:/        |  |:|        \  \:\     /  /:/\:\        \  \:\
+  /  /:/ /::\  /__/::\        |  |:|    ___  \  \:\   /  /:/~/::\   _____\__\:\
+ /__/:/ /:/\:\ \__\/\:\__   __|__|:|   /__/\  \__\:\ /__/:/ /:/\:\ /__/::::::::\
+ \  \:\/:/~/:/    \  \:\/\ /__/::::\   \  \:\ /  /:/ \  \:\/:/__\/ \  \:\~~\~~\/
+  \  \::/ /:/      \__\::/    ~\~~\:\   \  \:\  /:/   \  \::/       \  \:\  ~~~
+   \__\/ /:/       /__/:/       \  \:\   \  \:\/:/     \  \:\        \  \:\
+     /__/:/        \__\/         \__\/    \  \::/       \  \:\        \  \:\
+     \__\/                                 \__\/         \__\/         \__\/
+I 2025/08/27 19:56:43 runtime.go:93: kernel is booting:
+    * ver [3.3.0]
+    * arch [amd64]
+    * os [alpine]
+    * pid [1]
+    * runtime mode [prod]
+    * working directory [/opt/siyuan]
+    * read only [false]
+    * container [docker]
+    * database [ver=20220501]
+    * workspace directory [/siyuan/workspace]
+I 2025/08/27 19:56:43 conf.go:129: loaded conf [/siyuan/workspace/conf/conf.json]
+I 2025/08/27 19:56:43 runtime.go:145: use network proxy [system]
+I 2025/08/27 19:56:43 serve.go:208: kernel [pid=1] http server [0.0.0.0:6806] is booting
+I 2025/08/27 19:56:43 working.go:545: database [/siyuan/workspace/temp/siyuan.db] size [106.5 kB]
+I 2025/08/27 19:56:43 working.go:545: database [/siyuan/workspace/temp/blocktree.db] size [12.29 kB]
+I 2025/08/27 19:56:43 working.go:545: database [/siyuan/workspace/temp/history.db] size [24.58 kB]
+I 2025/08/27 19:56:43 working.go:545: database [/siyuan/workspace/temp/asset_content.db] size [24.58 kB]
+I 2025/08/27 19:56:43 conf.go:881: tree/block count [0/0]
+I 2025/08/27 19:56:43 working.go:224: kernel booted
+I 2025/08/27 19:56:43 font.go:57: loaded system fonts [0] in [0ms]
+I 2025/08/27 19:56:43 box.go:77: auto stat [trees=0, blocks=0, dataSize=36.87 kB, assetsSize=0 B]
+I 2025/08/27 19:56:44 cron.go:61: cron job [[RefreshRhyResultJob]] executed
+W 2025/08/27 20:06:41 history.go:674: history dir [/siyuan/workspace/history] not exist
+W 2025/08/27 20:16:40 history.go:674: history dir [/siyuan/workspace/history] not exist
